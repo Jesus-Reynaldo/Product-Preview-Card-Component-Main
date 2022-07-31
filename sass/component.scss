@@ -1,0 +1,133 @@
+$width: 600px;
+$height: 450px;
+$width-mobile: 345px;
+$height-mobile: 600px;
+$color-container: white;
+$color-price-offer: hsl(158, 36%, 37%);
+@mixin text-format {
+  color: hsl(228, 12%, 48%);
+  font-family: Montserrat, Sans-serif;
+  font-weight: 500;
+  font-size: 0.87rem;
+}
+
+@mixin mobile {
+  display: flex;
+  flex-direction: column;
+  max-width: $width-mobile;
+  max-height: $height-mobile;
+}
+@mixin desktop {
+  display: flex;
+  flex-direction: row;
+  max-width: $width;
+  max-height: $height;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap");
+
+.container {
+  margin: 1rem;
+  background-color: $color-container;
+  border-radius: 10px;
+  @include mobile;
+  .image {
+    border-radius: 10px 10px 0px 0px;
+    width: $width-mobile;
+    display: block;
+    height: $height-mobile * 0.5;
+    background-image: url(../images/image-product-mobile.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .description {
+    padding: 1.25rem 2rem;
+    .subtitle {
+      @include text-format();
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
+    }
+    .title {
+      margin: 0.63rem 0;
+      color: hsl(212, 21%, 14%);
+      font-family: Fraunces;
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 1.88rem;
+    }
+    .text {
+      @include text-format();
+      font-weight: 500;
+      line-height: 1.5rem;
+    }
+    .price {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      padding-right: 2.5rem;
+      margin: 1.5rem 0;
+      gap: 1rem;
+      .price-offer {
+        font-family: Fraunces;
+        color: $color-price-offer;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+      .price-before {
+        @include text-format();
+        font-size: 0.9rem;
+      }
+    }
+    .btn-cart {
+      width: 100%;
+      display: flex;
+      height: 3rem;
+      border-radius: 10px;
+      border: none;
+      background-color: hsl(158, 36%, 37%);
+      color: white;
+      font-family: Montserrat;
+      font-weight: bold;
+      padding: auto;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      &:hover {
+        background-color: #1a4031;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 540px) {
+  .container {
+    @include desktop();
+    .image {
+      border-radius: 10px 0px 0px 10px;
+      height: $height;
+      width: $width * 0.5;
+      background-image: url(../images/image-product-desktop.jpg);
+    }
+    .description {
+      padding: 2rem;
+      width: 236px;
+      height: 386px;
+      .subtitle {
+        margin: 0;
+      }
+      .title {
+        margin: 1.25rem 0 2rem 0;
+        font-weight: 700;
+        padding-right: 2.5rem;
+      }
+      .text {
+        margin: 0;
+        padding-right: 0.75rem;
+      }
+      .price {
+        justify-content: space-between;
+      }
+    }
+  }
+}
